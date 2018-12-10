@@ -1,5 +1,4 @@
-
-#!groovy
+#!groovy.
 import hudson.model.*
 
 node {

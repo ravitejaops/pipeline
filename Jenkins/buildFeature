@@ -16,6 +16,7 @@ node {
 echo "getting jobs"
 
     loadProperties()
+    echo "Immediate one job.properties.PROJECT_NAME"
     getJobs ()
     echo "workspace is $workspace"
     
@@ -25,9 +26,9 @@ echo "getting jobs"
     echo "file is $file"
     String path = file.getCanonicalPath();
     echo "path is $path"
-    sh 'env > ENV'
-    println readFile('ENV').trim()
-    printAllMethods (Hudson)
+    #sh 'env > ENV'
+    #println readFile('ENV').trim()
+   # printAllMethods (Hudson)
     
        //git 'https://github.com/ravitejaops/helloworld.git'
        

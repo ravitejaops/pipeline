@@ -30,7 +30,7 @@ node {
 
    stage ('Build'){
        def mavenHome=tool name: 'Maven', type: 'maven'
-       sh  "{mavenHome}/bin/mvn clean"
+       sh  "${mavenHome}/bin/mvn clean"
 
     }
 

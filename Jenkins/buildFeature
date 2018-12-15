@@ -27,9 +27,9 @@ node {
     }
 
    stage ('Build'){
-    withMaven(maven: 'Maven'){
+
         sh 'mvn clean'
-    }
+
     }
 
     /*stage ('Deploy to Artifactory'){

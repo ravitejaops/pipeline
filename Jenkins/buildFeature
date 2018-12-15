@@ -1,6 +1,11 @@
 #!groovy.
 import hudson.model.*
 
+tools{
+    maven 'maven 3'
+    jdk 'java 8'
+}
+
 def loadProperties() {
     node {
         checkout scm
@@ -19,11 +24,6 @@ node {
                   submoduleCfg: [],
                   userRemoteConfigs: [[credentialsId: '7b5f3a4d-e607-422a-85cf-8a99faaf98f9', url: 'https://github.com/ravitejaops/helloworld-java-maven.git']]])
 
-    }
-
-    tools{
-        maven 'maven 3'
-        jdk 'java 8'
     }
 
     stage ('Build'){

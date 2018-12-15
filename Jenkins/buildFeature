@@ -18,6 +18,8 @@ node {
     
     stage ('Checkout'){
 
+        tool name: 'Maven', type: 'maven'
+
         checkout([$class: 'GitSCM', branches: [[name: '**']],
                   doGenerateSubmoduleConfigurations: false,
                   extensions: [[$class: 'CleanBeforeCheckout']],

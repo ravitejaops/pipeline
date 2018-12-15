@@ -1,24 +1,14 @@
 #!groovy.
-import hudson.model.*
-
-/*tools{
-    maven 'maven 3'
-    jdk 'java 8'
-}*/
 
 def loadProperties() {
-    node {
         checkout scm
         properties = readProperties file: 'job.properties'
         echo "Immediate one job.properties.PROJECT_NAME"
     }
-}
 
 node {
     
     stage ('Checkout'){
-
-
 
         checkout([$class: 'GitSCM', branches: [[name: '**']],
                   doGenerateSubmoduleConfigurations: false,
@@ -34,53 +24,13 @@ node {
 
     }
 
+
     /*stage ('Deploy to Artifactory'){
 
     }*/
-echo "getting jobs"
 
-    loadProperties()
-    echo "Immediate one job.properties.PROJECT_NAME"
-    //getJobs ()
-    echo "workspace is $workspace"
-    echo "job name is $JOB_NAME"
-
-    File file = new File("$workspace/../../jobs/$JOB_NAME/builds/lastSuccessfulBuild")
-    echo "file is $file"
-    String path = file.getCanonicalPath();
-    echo "path is $path"
-    //sh 'env > ENV'
-    //println readFile('ENV').trim()
-   //printAllMethods (Hudson)
-    
-       //git 'https://github.com/ravitejaops/helloworld.git'
-       
-       //build job: "NEW-HELLOWORLD", parameters: [[$class: 'StringParameterValue', name: 'build', value: '$path']]
-
-    //}
-    
-}
-
-def getJobs(){
-    //def hi=Hudson.instance.getAllItems(hudson.model.Job.class)
-    //println hi
-    def hi=Hudson.instance.getJobNames()
-    print hi
-}
-
-void printAllMethods( obj ){
-    if( !obj ){
-		println( "Object is null\r\n" );
-		return;
+    /*stage ('TriggerOtherBuild'){
+    build job: "NEW-HELLOWORLD", parameters: [[$class: 'StringParameterValue', name: 'build', value: '$path']]
     }
-	if( !obj.metaClass && obj.getClass() ){
-        printAllMethods( obj.getClass() );
-		return;
-    }
-	def str = "class ${obj.getClass().name} functions:\r\n";
-	obj.metaClass.methods.name.unique().each{ 
-		str += it+"(); "; 
-	}
-	println "${str}\r\n";
+     */
 }
-
